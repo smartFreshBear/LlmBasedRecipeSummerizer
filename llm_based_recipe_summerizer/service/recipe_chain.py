@@ -29,6 +29,7 @@ instructions: What are the instructions for the recipe? what should be done? how
 3- Make sure ingredients has only list of ingredients not instruction for the recipe,
 include the portion of each ingredient as well, if they are missing, estimate them given the instructions.
  (nothing more, nothing less, do not miss anything!).
+ תכלול את הכמויות של כל מרכיב, אם הכמויות חסרות תעריך אותם
 4- Make sure instructions has only list of instructions, which is everything the user needs to know and follow
 from preparation, to cooking or baking, all the way to serving the dish, DO NOT MISS ANYTHING!
 5- תשים לב שאתה לא שוכח כלום ברשימת ההוראות, כל מה שהמשתמש צריך בשביל להכין את המתכון,
