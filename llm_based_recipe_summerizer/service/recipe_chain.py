@@ -34,6 +34,8 @@ from preparation, to cooking or baking, all the way to serving the dish, DO NOT 
  מההכנות לבישול או האפיה וכמובן כולל ההגשה! אל תשכח את ההגשה!
 
 5- no links, no html, no nothing. just text as described above.
+6- remove comment section from the text, dates, commercials , they should not be in the output.
+תסיר תגובות מהטקסט, תאריכים ופרסומות, זה לא אמור להיות שם!
 
 
 text: {text}
