@@ -26,13 +26,14 @@ instructions: What are the instructions for the recipe? what should be done? how
 
 1- Make sure the output stays in the original language.
 2- Make sure the output is only JSON. nothing else!
-3- Make sure ingredients has only list of ingredients not instruction for the recipe
+3- Make sure ingredients has only list of ingredients not instruction for the recipe,
+include the portion of each ingredient as well, if they are missing, estimate them given the instructions.
  (nothing more, nothing less, do not miss anything!).
 4- Make sure instructions has only list of instructions, which is everything the user needs to know and follow
 from preparation, to cooking or baking, all the way to serving the dish, DO NOT MISS ANYTHING!
 5- תשים לב שאתה לא שוכח כלום ברשימת ההוראות, כל מה שהמשתמש צריך בשביל להכין את המתכון,
  מההכנות לבישול או האפיה וכמובן כולל ההגשה! אל תשכח את ההגשה!
-
+ 
 5- no links, no html, no nothing. just text as described above.
 6- remove comment section from the text, dates, commercials , they should not be in the output.
 תסיר תגובות מהטקסט, תאריכים ופרסומות, זה לא אמור להיות שם!
