@@ -23,26 +23,32 @@ format_instructions = output_parser.get_format_instructions()
 
 
 review_template = """\
-The following text, contains a recipe, your task is to:
+The following JSON, contains a recipe json with some noise and or/ corruption your task is to:
 
-1- Extract the ingredients and the instructions from the text.
-1.1 Mind that instructions are a bit tricky to extract, they are usually the steps that the user needs to follow to prepare the dish.
-1.2 Because of the instructions challange we prefer to just keep text even if it is not 100% related to the instructions, just to be on the safe side.
-2- Summarize the recipe, but keep all the essential information (be careful not to drop any stage/phase/section or text which might be important for the recipe).
-2.1 While Summering do not drop any essential information (if you are not sure, keep it!!!)
-2.2 Sometimes the text is already short and well summarized, so the only thing you need to do is step 3.
-2.3 Usually parenthesis () are very essential for the recipe, so keep them in the output!!!
-2.4 While summarizing, be super aware of numbers and units, they are very important for the recipe, so text with numbers (can be units, or just number represinting stages in the instructions) should be kept in the output.
-2.5 Make sure the numbers has at least one space before and after them, so they are not attached to the text.
-3. make sure not to return just a string of char but rather words that make sense and are related to the recipe.
-4- Keep all the process relevant for the cooking process, from preparation, to cooking or baking, all the way to serving the dish.
-4.1 make the response as long as it's need to be to keep all the relevant information.
-4.2 Sometimes the text contained some symbols like #, * or any other that are not related to the recipe, make sure to remove them.
-4.3 If the text has some typo, make sure to correct it, but do not change the meaning of the text.
-5- return a (only!) JSON response with the following (only) keys:
- 
-ingredients: contains the list of ingredients (list of text only, line per ingredient) and their sub category (usually comes with number that make the stage) or headline, and the portion of each ingredient, no inner keys should be included, just the ingredient name and portion as text (avoid having inner "ingridentns" or מרכיבים inside the text), if the portion is missing, estimate it given the instructions, it can be grams, cups, spoons, or any other unit, DO NOT MISS ANYTHING!
-instructions: contains list of instructions (list of text, line per instruction) , which is everything the user needs to know and follow from preparation, to cooking or baking, all the way to serving the dish, DO NOT MISS ANYTHING!
+1- Clean it so it will include only recipe related, ingredients and instructions (likely the noise is only in the values)
+2- Clean the text from any irrelevant information, symbols, or typos, urls, or any other non related text.
+3- Just keep the relevant information of the cooking recipe.
+4- Make sure all the sections (which looks like number, single letter, or a word) are kept in the output.
+5- All recipe related data is there, BUT text which is not related to the recipe, remove it.
+6- DO NOT remove any additional instructions, decoration, serving details, or any other text that might be 
+important for serving the dish or any peripheral information that might support the recipe.
+כל מה שקשור להגשה, לדרך שבה חותכים, מקררים, מחממים זה גם חלק מההוראות וצריך להישאר בתוצאה.
+7- Of course the output is only JSON, and the text is a string value for each key (no inner keys),
+ and the value should stay in the original language.
+8- Urls, encoded related stuff like 9c%d7% or 
+%d7%a7%d7%9c other not relevant symbols or special that has no reason to appear (\\ * % # @ etc) - remove them.
+9- Eventually, all outputs that are processed by you should be align, to be aligned to one simple format.
+10- Return a (ONLY !) JSON response with the following (only) keys, 1- ingredients, 2- instructions.
+
+ingredients: contains the list of ingredients (list of text only, line per ingredient) and
+ their sub category (usually comes with number that make the stage) or headline, 
+ and the portion of each ingredient, no inner keys should be included, just the 
+ ingredient name and portion as text (avoid having inner "ingredients" or מרכיבים inside the text),
+  if the portion is missing, estimate it given the instructions, it can be grams, cups, spoons,
+   or any other unit, DO NOT MISS ANYTHING!
+
+instructions: contains list of instructions (list of text, line per instruction)
+which is everything the user needs to know and follow from preparation, to cooking or baking, all the way to serving the dish, DO NOT MISS ANYTHING!
 
 We don't want anything else but a json response with the above keys, and the text as a string value for each key.
 otherwise it won't be parsed correctly.
